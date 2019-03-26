@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Generales.Core.Models;
+using Generales.EF.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Generales.EF.Context
@@ -18,19 +19,8 @@ namespace Generales.EF.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Clasificacion>()
-                .ToTable("Clasificaciones", "Generales")
-                .HasKey(k => k.ID_Clasificacion);
-
-            builder.Entity<Producto>()
-                .ToTable("Productos", "Generales")
-                .HasKey(k => k.ID_Producto);
-
-            builder.Entity<Producto>()
-                .HasOne(u => u.Clasificacion)
-                .WithMany(u => u.Productos)
-                .HasForeignKey(u => u.ID_Clasificacion)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.ApplyConfiguration(new ClasificacionesConfiguration());
+            builder.ApplyConfiguration(new ProductosConfiguration());
         }
     }
 }
