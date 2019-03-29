@@ -11,13 +11,14 @@ namespace Ventas.EF.Context
     {
         public VentasContext(DbContextOptions<VentasContext> options) : base(options)
         {
+            
         }
 
         public DbSet<Venta> Ventas { get; set; }
+
         public DbSet<VentaDetalle> VentasDetalles { get; set; }
         
         public DbSet<VentaPago> VentasPagos { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,8 +28,7 @@ namespace Ventas.EF.Context
             builder.ApplyConfiguration(new VentasDetallesConfiguration());
 
             builder.ApplyConfiguration(new VentasPagosConfiguration());
-
-            builder.Ignore<Cliente>();
+            
         }
     }
 }
