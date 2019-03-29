@@ -10,13 +10,14 @@ using Ventas.EF.Context;
 namespace Ventas.EF.Migrations
 {
     [DbContext(typeof(VentasContext))]
-    [Migration("20190326064032_AjustesCampos")]
-    partial class AjustesCampos
+    [Migration("20190329080813_InitialVentas")]
+    partial class InitialVentas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Ventas")
                 .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -34,19 +35,11 @@ namespace Ventas.EF.Migrations
 
                     b.Property<int>("ID_Cliente");
 
-                    b.Property<int>("ID_UsuarioAlta");
-
-                    b.Property<int>("ID_UsuarioCambio");
-
                     b.Property<decimal>("Importe")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Impuesto")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("RegistroAlta");
-
-                    b.Property<DateTime>("RegistroCambio");
 
                     b.Property<decimal>("SubTotal")
                         .HasColumnType("decimal(18,2)");
@@ -54,11 +47,9 @@ namespace Ventas.EF.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("UUID");
-
                     b.HasKey("ID_Venta");
 
-                    b.ToTable("Ventas","Ventas");
+                    b.ToTable("Ventas");
                 });
 
             modelBuilder.Entity("Ventas.Core.Models.VentaDetalle", b =>
@@ -72,10 +63,6 @@ namespace Ventas.EF.Migrations
                         .HasColumnType("decimal(18,6)");
 
                     b.Property<int>("ID_Impuesto");
-
-                    b.Property<int>("ID_UsuarioAlta");
-
-                    b.Property<int>("ID_UsuarioCambio");
 
                     b.Property<int>("ID_Venta");
 
@@ -94,21 +81,15 @@ namespace Ventas.EF.Migrations
                     b.Property<decimal>("PrecioUnitario")
                         .HasColumnType("decimal(18,6)");
 
-                    b.Property<DateTime>("RegistroAlta");
-
-                    b.Property<DateTime>("RegistroCambio");
-
                     b.Property<decimal>("SubTotal")
                         .HasColumnType("decimal(18,6)");
 
                     b.Property<decimal>("Total")
                         .HasColumnType("decimal(18,6)");
 
-                    b.Property<Guid>("UUID");
-
                     b.HasKey("ID_VentaDetalle");
 
-                    b.ToTable("VentasDetalles","Ventas");
+                    b.ToTable("VentasDetalles");
                 });
 
             modelBuilder.Entity("Ventas.Core.Models.VentaPago", b =>
@@ -117,24 +98,14 @@ namespace Ventas.EF.Migrations
 
                     b.Property<int>("ID_FormaPago");
 
-                    b.Property<int>("ID_UsuarioAlta");
-
-                    b.Property<int>("ID_UsuarioCambio");
-
                     b.Property<int>("ID_Venta");
 
                     b.Property<decimal>("Importe")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("RegistroAlta");
-
-                    b.Property<DateTime>("RegistroCambio");
-
-                    b.Property<Guid>("UUID");
-
                     b.HasKey("ID_VentaPago");
 
-                    b.ToTable("VentasPagos","Ventas");
+                    b.ToTable("VentasPagos");
                 });
 
             modelBuilder.Entity("Ventas.Core.Models.VentaDetalle", b =>

@@ -32,7 +32,7 @@ namespace Ventura.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGeneralesContext(Configuration);
-            services.AddVentasContext(Configuration);
+            //services.AddVentasContext(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt =>

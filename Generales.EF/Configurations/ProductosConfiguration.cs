@@ -12,14 +12,13 @@ namespace Generales.EF.Configurations
         public void Configure(EntityTypeBuilder<Producto> builder)
         {
             builder
-                .ToTable("Productos", "Generales")
+                .ToTable("Productos")
                 .HasKey(k => k.ID_Producto);
 
-            builder
-                .HasOne(u => u.Clasificacion)
-                .WithMany(u => u.Productos)
-                .HasForeignKey(u => u.ID_Clasificacion)
-                .OnDelete(DeleteBehavior.Restrict);
+            
+                
+
+           
         }
     }
 }

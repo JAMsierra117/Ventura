@@ -1,4 +1,5 @@
-﻿using Generales.EF.Context;
+﻿using Generales.EF.Access;
+using Generales.EF.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,9 @@ namespace Ventura.API.Configurations
                .AddDbContext<GeneralesContext>(x => x
                    .UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
+
+            services.AddScoped<ProductosData>();
         }
     }
 }

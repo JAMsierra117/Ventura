@@ -18,6 +18,10 @@ namespace Ventura.API.Helpers
 
             });
 
+
+            CreateMap<ProductoForCreationDTO, Producto>().ReverseMap();
+         
+
         }
 
     }

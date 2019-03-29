@@ -12,7 +12,7 @@ namespace Ventas.EF.Configurations
         public void Configure(EntityTypeBuilder<VentaPago> builder)
         {
             builder
-               .ToTable("VentasPagos", "Ventas")
+               .ToTable("VentasPagos")
                .HasKey(k => k.ID_VentaPago);
 
             builder

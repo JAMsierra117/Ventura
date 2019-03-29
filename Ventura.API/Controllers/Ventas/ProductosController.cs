@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Generales.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ventas.EF.Context;
 using Ventas.EF.Data;
+using Ventura.API.Dtos.Generales;
 
 namespace Ventura.API.Controllers.Ventas
 {
@@ -20,7 +22,7 @@ namespace Ventura.API.Controllers.Ventas
 
         public ProductosController(VentasData ventas, IMapper mapper)
         {
-            
+
             this._ventas = ventas;
             this._mapper = mapper;
         }
@@ -32,5 +34,7 @@ namespace Ventura.API.Controllers.Ventas
 
             return Ok(datos);
         }
+
+        
     }
 }

@@ -15,6 +15,7 @@ namespace Ventas.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Ventas")
                 .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -46,7 +47,7 @@ namespace Ventas.EF.Migrations
 
                     b.HasKey("ID_Venta");
 
-                    b.ToTable("Ventas","Ventas");
+                    b.ToTable("Ventas");
                 });
 
             modelBuilder.Entity("Ventas.Core.Models.VentaDetalle", b =>
@@ -86,7 +87,7 @@ namespace Ventas.EF.Migrations
 
                     b.HasKey("ID_VentaDetalle");
 
-                    b.ToTable("VentasDetalles","Ventas");
+                    b.ToTable("VentasDetalles");
                 });
 
             modelBuilder.Entity("Ventas.Core.Models.VentaPago", b =>
@@ -102,7 +103,7 @@ namespace Ventas.EF.Migrations
 
                     b.HasKey("ID_VentaPago");
 
-                    b.ToTable("VentasPagos","Ventas");
+                    b.ToTable("VentasPagos");
                 });
 
             modelBuilder.Entity("Ventas.Core.Models.VentaDetalle", b =>

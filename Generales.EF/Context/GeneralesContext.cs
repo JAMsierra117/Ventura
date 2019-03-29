@@ -19,6 +19,7 @@ namespace Generales.EF.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.HasDefaultSchema("Generales");
             builder.ApplyConfiguration(new ClasificacionesConfiguration());
             builder.ApplyConfiguration(new ProductosConfiguration());
         }

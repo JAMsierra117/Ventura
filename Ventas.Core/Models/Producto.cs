@@ -8,5 +8,7 @@ namespace Ventas.Core.Models
     {
         public int ID_Producto { get; set; }
         public string NombreProducto { get; set; }
+        public string CodigoProducto { get; set; }
+
     }
 }

@@ -8,13 +8,19 @@ using Ventas.EF.Context;
 
 namespace Ventas.EF.Data
 {
-    public class VentasData
+    public class VentasData : IDisposable
     {
         private readonly ReferenceContext _reference;
         public VentasData(ReferenceContext reference)
         {
             this._reference = reference;
         }
+
+        public void Dispose()
+        {
+            _reference.Dispose();
+        }
+
         public async Task<IEnumerable<Producto>> GetProductos()
         {
             return await _reference.Productos.ToListAsync();

@@ -22,7 +22,7 @@ namespace Ventas.EF.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            builder.HasDefaultSchema("Ventas");
             builder.ApplyConfiguration(new VentasConfiguration());
 
             builder.ApplyConfiguration(new VentasDetallesConfiguration());

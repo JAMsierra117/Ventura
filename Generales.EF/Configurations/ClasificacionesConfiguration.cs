@@ -12,7 +12,7 @@ namespace Generales.EF.Configurations
         public void Configure(EntityTypeBuilder<Clasificacion> builder)
         {
             builder
-                .ToTable("Clasificaciones", "Generales")
+                .ToTable("Clasificaciones")
                 .HasKey(k => k.ID_Clasificacion);
         }
     }

@@ -4,18 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ventas.EF.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialVentas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
                 name: "Ventas");
-
-            migrationBuilder.EnsureSchema(
-                name: "VentasDetalles");
-
-            migrationBuilder.EnsureSchema(
-                name: "VentasPagos");
 
             migrationBuilder.CreateTable(
                 name: "Ventas",
@@ -24,18 +18,13 @@ namespace Ventas.EF.Migrations
                 {
                     ID_Venta = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ID_UsuarioAlta = table.Column<int>(nullable: false),
-                    RegistroAlta = table.Column<DateTime>(nullable: false),
-                    ID_UsuarioCambio = table.Column<int>(nullable: false),
-                    RegistroCambio = table.Column<DateTime>(nullable: false),
-                    UUID = table.Column<Guid>(nullable: false),
                     ID_Cliente = table.Column<int>(nullable: false),
                     FechaVenta = table.Column<DateTime>(nullable: false),
-                    Importe = table.Column<decimal>(nullable: false),
-                    Descuento = table.Column<decimal>(nullable: false),
-                    SubTotal = table.Column<decimal>(nullable: false),
-                    Impuesto = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
+                    Importe = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Descuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SubTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Impuesto = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,24 +33,21 @@ namespace Ventas.EF.Migrations
 
             migrationBuilder.CreateTable(
                 name: "VentasDetalles",
-                schema: "VentasDetalles",
+                schema: "Ventas",
                 columns: table => new
                 {
                     ID_VentaDetalle = table.Column<int>(nullable: false),
-                    ID_UsuarioAlta = table.Column<int>(nullable: false),
-                    RegistroAlta = table.Column<DateTime>(nullable: false),
-                    ID_UsuarioCambio = table.Column<int>(nullable: false),
-                    RegistroCambio = table.Column<DateTime>(nullable: false),
-                    UUID = table.Column<Guid>(nullable: false),
                     ID_Venta = table.Column<int>(nullable: false),
-                    CostoUnitario = table.Column<decimal>(nullable: false),
-                    Cantidad = table.Column<decimal>(nullable: false),
-                    Importe = table.Column<decimal>(nullable: false),
-                    Descuento = table.Column<decimal>(nullable: false),
-                    Impuesto = table.Column<decimal>(nullable: false),
-                    ID_Impuesto = table.Column<decimal>(nullable: false),
-                    SubTotal = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
+                    PrecioUnitario = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    Cantidad = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    Importe = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    Descuento = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    PorcentajeDescuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Impuesto = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    PorcentajeImpuesto = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ID_Impuesto = table.Column<int>(nullable: false),
+                    SubTotal = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(18,6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,18 +63,13 @@ namespace Ventas.EF.Migrations
 
             migrationBuilder.CreateTable(
                 name: "VentasPagos",
-                schema: "VentasPagos",
+                schema: "Ventas",
                 columns: table => new
                 {
                     ID_VentaPago = table.Column<int>(nullable: false),
-                    ID_UsuarioAlta = table.Column<int>(nullable: false),
-                    RegistroAlta = table.Column<DateTime>(nullable: false),
-                    ID_UsuarioCambio = table.Column<int>(nullable: false),
-                    RegistroCambio = table.Column<DateTime>(nullable: false),
-                    UUID = table.Column<Guid>(nullable: false),
                     ID_Venta = table.Column<int>(nullable: false),
                     ID_FormaPago = table.Column<int>(nullable: false),
-                    Importe = table.Column<decimal>(nullable: false)
+                    Importe = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -107,11 +88,11 @@ namespace Ventas.EF.Migrations
         {
             migrationBuilder.DropTable(
                 name: "VentasDetalles",
-                schema: "VentasDetalles");
+                schema: "Ventas");
 
             migrationBuilder.DropTable(
                 name: "VentasPagos",
-                schema: "VentasPagos");
+                schema: "Ventas");
 
             migrationBuilder.DropTable(
                 name: "Ventas",
